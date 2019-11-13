@@ -1,5 +1,5 @@
-<?php include('header.php') ?>	
-
+<?php include('header.php'); ?>
+	
 	<div class="bg-light border-bottom shadow-sm sticky-top">
 		<div class="container">
 			<header class="blog-header py-1">
@@ -30,16 +30,19 @@
 	
 	<?php
 	$condition	=	'';
-	if(isset($_REQUEST['username']) and $_REQUEST['username']!=""){
-		$condition	.=	' AND username LIKE "%'.$_REQUEST['username'].'%" ';
+	if(isset($_REQUEST['name_a']) and $_REQUEST['name_a']!=""){
+		$condition	.=	' AND arot_name LIKE "%'.$_REQUEST['name_a'].'%" ';
 	}
-	if(isset($_REQUEST['useremail']) and $_REQUEST['useremail']!=""){
-		$condition	.=	' AND useremail LIKE "%'.$_REQUEST['useremail'].'%" ';
+	if(isset($_REQUEST['p_arot']) and $_REQUEST['p_arot']!=""){
+		$condition	.=	' AND arot_phone LIKE "%'.$_REQUEST['p_arot'].'%" ';
 	}
-	if(isset($_REQUEST['userphone']) and $_REQUEST['userphone']!=""){
-		$condition	.=	' AND userphone LIKE "%'.$_REQUEST['userphone'].'%" ';
+	if(isset($_REQUEST['owner_n']) and $_REQUEST['owner_n']!=""){
+		$condition	.=	' AND arot_owner_name LIKE "%'.$_REQUEST['owner_n'].'%" ';
 	}
-	$userData	=	$db->getAllRecords('lc_info','*',$condition,'ORDER BY id DESC');
+	if(isset($_REQUEST['ownder_p']) and $_REQUEST['ownder_p']!=""){
+		$condition	.=	' AND arot_owner_phone LIKE "%'.$_REQUEST['ownder_p'].'%" ';
+	}
+	$userData	=	$db->getAllRecords('arot_info','*',$condition,'ORDER BY id DESC');
 	?>
    	<div class="container">
 		<h1><a href="https://learncodeweb.com/php/php-crud-in-bootstrap-4-with-search-functionality/">PHP CRUD in Bootstrap with search and pagination</a></h1>
@@ -59,56 +62,57 @@
 				?>
 				<div class="col-sm-12">
 					<h5 class="card-title"><i class="fa fa-fw fa-search"></i> Find User</h5>
-					<form method="get">
-						<div class="row">
-							<div class="col-sm-2">
-								<div class="form-group">
-									<label>User Name</label>
-									<input type="text" name="username" id="username" class="form-control" value="<?php echo isset($_REQUEST['username'])?$_REQUEST['username']:''?>" placeholder="Enter user name">
-								</div>
-							</div>
-							<div class="col-sm-2">
-								<div class="form-group">
-									<label>User Email</label>
-									<input type="email" name="useremail" id="useremail" class="form-control" value="<?php echo isset($_REQUEST['useremail'])?$_REQUEST['useremail']:''?>" placeholder="Enter user email">
-								</div>
-							</div>
-							<div class="col-sm-2">
-								<div class="form-group">
-									<label>User Phone</label>
-									<input type="tel" name="userphone" id="userphone" class="form-control" value="<?php echo isset($_REQUEST['userphone'])?$_REQUEST['userphone']:''?>" placeholder="Enter user phone">
-								</div>
-							</div>
-							<div class="col-sm-2">
-								<div class="form-group">
-									<label>&nbsp;</label>
-									<div>
-										<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i> Search</button>
-										<a href="<?php echo $_SERVER['PHP_SELF'];?>" class="btn btn-danger"><i class="fa fa-fw fa-sync"></i> Clear</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</form>
+ <!-- 					<form method="get">
+	<div class="row">
+		<div class="col-sm-2">
+			<div class="form-group">
+				<label>name_a</label>
+				<input type="text" name="name_a" id="name_a" class="form-control" value="<?php echo isset($_REQUEST['name_a'])?$_REQUEST['name_a']:''?>" placeholder="Enter user name">
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="form-group">
+				<label>p_arot</label>
+				<input type="email" name="p_arot" id="p_arot" class="form-control" value="<?php echo isset($_REQUEST['p_arot'])?$_REQUEST['p_arot']:''?>" placeholder="Enter user email">
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="form-group">
+				<label>owner_n</label>
+				<input type="tel" name="owner_n" id="owner_n" class="form-control" value="<?php echo isset($_REQUEST['owner_n'])?$_REQUEST['owner_n']:''?>" placeholder="Enter user phone">
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="form-group">
+				<label>ownder_p</label>
+				<input type="tel" name="ownder_p" id="ownder_p" class="form-control" value="<?php echo isset($_REQUEST['ownder_p'])?$_REQUEST['ownder_p']:''?>" placeholder="Enter user phone">
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="form-group">
+				<label>&nbsp;</label>
+				<div>
+					<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i> Search</button>
+					<a href="<?php echo $_SERVER['PHP_SELF'];?>" class="btn btn-danger"><i class="fa fa-fw fa-sync"></i> Clear</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</form> -->
 				</div>
 			</div>
 		</div>
 		<hr>
 		
 		<div>
-			<table class="table table-striped table-bordered">
+			<table id="myTable" class="table table-striped table-bordered">
 				<thead>
 					<tr class="bg-primary text-white">
 						<th>Sr#</th>
-						<td>lc_number</td>
-						<td>lc_date</td>
-						<td>importer_name</td>
-						<td>exporter_name</td>
-						<td>item</td>
-						<td>price_per</td>
-						<td>total_weight</td>
-						<td>amount</td>
-						<td>bank_name</td>
+						<th>Arot Name</th>
+						<th>Phone Number</th>
+						<th>Owner Name</th>
+						<th>Owner Phone Number</th>
 						<th class="text-center">Action</th>
 					</tr>
 				</thead>
@@ -120,15 +124,10 @@
 					?>
 					<tr>
 						<td><?php echo $s;?></td>
-						<td><?php echo $val['lc_number'];?></td>
-						<td><?php echo $val['lc_date'];?></td>
-						<td><?php echo $val['importer_name'];?></td>
-						<td><?php echo $val['exporter_name'];?></td>
-						<td><?php echo $val['item'];?></td>
-						<td><?php echo $val['price_per'];?></td>
-						<td><?php echo $val['total_weight'];?></td>
-						<td><?php echo $val['amount'];?></td>
-						<td><?php echo $val['bank_name'];?></td>
+						<td><?php echo $val['arot_name'];?></td>
+						<td><?php echo $val['arot_phone'];?></td>
+						<td><?php echo $val['arot_owner_name'];?></td>
+						<td><?php echo $val['arot_owner_phone'];?></td>
 						<td align="center">
 							<a href="edit-users.php?editId=<?php echo $val['id'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Edit</a> | 
 							<a href="delete.php?delId=<?php echo $val['id'];?>" class="text-danger" onClick="return confirm('Are you sure to delete this user?');"><i class="fa fa-fw fa-trash"></i> Delete</a>
@@ -144,6 +143,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+	<script type="text/javascript">
+/*
+		$(document).ready( function () {
+			$('#myTable').DataTable();
+		} );
+*/
+	</script>
+
     
 </body>
 </html>
