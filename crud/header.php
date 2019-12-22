@@ -23,3 +23,29 @@
 </head>
 
 <body>
+
+	<div class="bg-light border-bottom shadow-sm sticky-top">
+		<div class="container">
+			<header class="blog-header py-1">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand text-muted p-0 m-0" href="https://learncodeweb.com"><img src='https://learncodeweb.com/wp-content/uploads/2019/01/logo.png' alt='LearnCodeWeb'></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+							<li itemscope="itemscope" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'active':''; ?> nav-item">
+								<a title="Home" href="index.php" class="nav-link">Home</a>
+							</li>
+							<li itemscope="itemscope" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'arot.php') ? 'active':''; ?> nav-item">
+								<a title="Home" href="arot.php" class="nav-link">Arot</a>
+							</li>
+							<li itemscope="itemscope" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'lc.php') ? 'active':''; ?> nav-item">
+								<a title="Home" href="lc.php" class="nav-link">All LC</a>
+							</li>
+							<li itemscope="itemscope" class="<?php echo (basename($_SERVER['PHP_SELF']) == 'truck.php') ? 'active':''; ?> nav-item">
+								<a title="Home" href="truck.php" class="nav-link">Truck Info</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+		</div> <!--/.container-->
+	</div>

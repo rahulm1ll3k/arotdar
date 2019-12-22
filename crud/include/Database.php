@@ -151,6 +151,17 @@ class Database{
         return $rows;
     }
      
+    public function getOneRecord($tableName, $fields='*', $field='id', $id='' )
+    {
+        //echo "SELECT  $tableName.$fields FROM $tableName WHERE 1 ".$cond." ".$orderBy." ".$limit;
+        //print "<br>SELECT $fields FROM $tableName WHERE 1 ".$cond." ".$orderBy." ".$limit;
+        $stmt = $this->pdo->prepare("SELECT $fields FROM $tableName WHERE ".$field."='".$id."'");
+        //print "SELECT $fields FROM $tableName WHERE 1 ".$cond." ".$orderBy." " ;
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+     
     public function getRecFrmQry($query)
     {
         //echo $query;
@@ -309,4 +320,20 @@ class Database{
      
      
 }
+
+
+$item_list = array(
+    'onion' => 'Onion (পেঁয়াজ)',
+    'spice' => 'Spice (মসলা)',
+    'chili' => 'Chili (মরিচ)',
+    'garlic' => 'Garlic (রসুন)',
+);
+
+$border_list = array(
+    'Benapole-Petropole',
+    'Burimari-Chengrabandha',
+    'Tomabil-Dauki',
+);
+
+
 ?>

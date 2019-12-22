@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2019 at 05:29 PM
+-- Generation Time: Dec 22, 2019 at 02:29 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.33
 
@@ -80,9 +80,7 @@ INSERT INTO `arot_info` (`id`, `arot_name`, `arot_phone`, `arot_address`, `arot_
 (35, 'Fivebridge', '575-364-008', '1712 Knutson Parkway', 'Alika De\'Ath', '290-135-511', '2161 Charing Cross Hill'),
 (36, 'Voonyx', '576-924-651', '9 Cascade Circle', 'Rowan Randlesome', '349-176-382', '185 Scott Point'),
 (37, 'Dynava', '360-879-246', '928 Sunnyside Circle', 'Dulcy Hebble', '357-338-752', '6310 Hallows Trail'),
-(38, 'Rooxo', '527-659-376', '38 Coleman Hill', 'Walther Tuvey', '930-697-793', '0850 Nevada Avenue'),
-(39, 'Yata', '896-919-496', '72804 Anhalt Plaza', 'Amye Prince', '800-817-206', '6454 Monument Lane'),
-(40, 'Brightdog', '940-452-972', '44 Dawn Trail', 'Lizabeth Baruch', '615-874-598', '00393 High Crossing Plaza');
+(42, 'Brightdog', '940-452-97', '', 'Lizabeth Baruch', '615-874-59', '');
 
 -- --------------------------------------------------------
 
@@ -384,9 +382,9 @@ INSERT INTO `lc_info` (`id`, `bank_name`, `lc_number`, `lc_date`, `border`, `imp
 (274, 'Vinder', '8812137148', '2/3/2019', 'Benapole', 'Rosene Chandlar', 'Cornall Everitt', 'Flounder - Fresh', 40828, 6953, 848),
 (275, 'Skaboo', '5663100342', '5/21/2019', 'Barsoi–Rad', 'Georgena Maddrah', 'Shelby Wonfar', 'Soup - Campbells Pasta Fagioli', 28818, 2218, 255),
 (276, 'Fivechat', '1879603462', '11/4/2018', 'Burimari r', 'Truman Naden', 'Trina Bodman', 'Beans - Wax', 32707, 1526, 245),
-(277, 'Youspan', '9941977046', '4/14/2019', 'Dawki', 'Berta Girvin', 'Rhodie Hallihane', 'Soup - Knorr, Classic Can. Chili', 39348, 5909, 422),
-(278, 'Jaxnation', '6370145157', '10/31/2018', 'Burimari r', 'Luther Netley', 'Suzann Dilliston', 'Pasta - Spaghetti, Dry', 42954, 8335, 711),
-(279, 'Fiveclub', '9042224622', '1/28/2019', 'Darshana r', 'Tracey Di Baudi', 'Gracia Glover', 'Sprouts - Peppercress', 13096, 2458, 673);
+(278, 'Jaxnation', '6370145157', '2019-12-14', 'Benapole-P', '7', '28', 'chili', 42954, 8335, 711),
+(279, 'Fiveclub', '9042224622', '2019-12-27', 'Benapole-P', '17', '17', 'onion', 13096, 2458, 673),
+(281, 'Brac', 'New', '2019-12-31', 'Benapole-P', '17', '42', 'spice', 1500, 1500, 15000);
 
 -- --------------------------------------------------------
 
@@ -465,13 +463,13 @@ ALTER TABLE `truck_info`
 -- AUTO_INCREMENT for table `arot_info`
 --
 ALTER TABLE `arot_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `lc_info`
 --
 ALTER TABLE `lc_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=282;
 
 --
 -- AUTO_INCREMENT for table `monthly_expence`

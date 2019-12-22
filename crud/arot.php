@@ -1,53 +1,26 @@
 <?php include('header.php'); ?>
-	
-	<div class="bg-light border-bottom shadow-sm sticky-top">
-		<div class="container">
-			<header class="blog-header py-1">
-				<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand text-muted p-0 m-0" href="https://learncodeweb.com"><img src='https://learncodeweb.com/wp-content/uploads/2019/01/logo.png' alt='LearnCodeWeb'></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav mr-auto">
-							<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-17" class="active nav-item"><a title="Home" href="https://learncodeweb.com/" class="nav-link">Home</a></li>
-							<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-16" class="nav-item"><a title="Web Development" href="https://learncodeweb.com/learn/web-development/" class="nav-link">Web Development</a></li>
-							<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-558" class="nav-item"><a title="PHP" href="https://learncodeweb.com/learn/php/" class="nav-link">PHP</a></li>
-							<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-14" class="nav-item"><a title="Bootstrap" href="https://learncodeweb.com/learn/bootstrap-framework/" class="nav-link">Bootstrap</a></li>
-							<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-559" class="nav-item"><a title="WordPress" href="https://learncodeweb.com/learn/wordpress/" class="nav-link">WordPress</a></li>
-							<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-15" class="nav-item"><a title="Snippets" href="https://learncodeweb.com/learn/snippets/" class="nav-link">Snippets</a></li>
-						</ul>
-						<form method="get" action="https://learncodeweb.com" class="form-inline my-2 my-lg-0">
-							<div class="input-group input-group-md">
-								<input type="text" class="form-control search-width" name="s" id="search" value="" placeholder="Search..." aria-label="Search">
-								<div class="input-group-append">
-									<button type="submit" class="btn btn-primary" id="searchBtn"><i class="fa fa-search"></i></button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</nav>
-			</header>
-		</div> <!--/.container-->
-	</div>
-	
+
 	<?php
 	$condition	=	'';
 	if(isset($_REQUEST['name_a']) and $_REQUEST['name_a']!=""){
-		$condition	.=	' AND arot_name LIKE "%'.$_REQUEST['name_a'].'%" ';
+		$condition .= ' AND arot_name LIKE "%'.$_REQUEST['name_a'].'%" ';
 	}
 	if(isset($_REQUEST['p_arot']) and $_REQUEST['p_arot']!=""){
-		$condition	.=	' AND arot_phone LIKE "%'.$_REQUEST['p_arot'].'%" ';
+		$condition .= ' AND arot_phone LIKE "%'.$_REQUEST['p_arot'].'%" ';
 	}
 	if(isset($_REQUEST['owner_n']) and $_REQUEST['owner_n']!=""){
-		$condition	.=	' AND arot_owner_name LIKE "%'.$_REQUEST['owner_n'].'%" ';
+		$condition .= ' AND arot_owner_name LIKE "%'.$_REQUEST['owner_n'].'%" ';
 	}
 	if(isset($_REQUEST['ownder_p']) and $_REQUEST['ownder_p']!=""){
-		$condition	.=	' AND arot_owner_phone LIKE "%'.$_REQUEST['ownder_p'].'%" ';
+		$condition .= ' AND arot_owner_phone LIKE "%'.$_REQUEST['ownder_p'].'%" ';
 	}
-	$userData	=	$db->getAllRecords('arot_info','*',$condition,'ORDER BY id DESC');
+	$userData = $db->getAllRecords('arot_info','*',$condition,'ORDER BY id DESC');
 	?>
+
    	<div class="container">
-		<h1><a href="https://learncodeweb.com/php/php-crud-in-bootstrap-4-with-search-functionality/">PHP CRUD in Bootstrap with search and pagination</a></h1>
+   		<br>
 		<div class="card">
-			<div class="card-header"><i class="fa fa-fw fa-globe"></i> <strong>Browse User</strong> <a href="add-users.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-plus-circle"></i> Add Users</a></div>
+			<div class="card-header"><i class="fa fa-fw fa-globe"></i> <strong>Browse User</strong> <a href="arot_add.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-plus-circle"></i> Add Users</a></div>
 			<div class="card-body">
 				<?php
 				if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="rds"){
@@ -61,8 +34,61 @@
 				}
 				?>
 				<div class="col-sm-12">
-					<h5 class="card-title"><i class="fa fa-fw fa-search"></i> Find User</h5>
- <!-- 					<form method="get">
+					<!-- <h5 class="card-title"><i class="fa fa-fw fa-search"></i> Find User</h5> -->
+
+					<?php if (isset($_REQUEST['viewid']) && $_REQUEST['viewid'] != '') {
+						$view_user = $db->getOneRecord('arot_info','*','id',$_REQUEST['viewid']);
+
+						?>
+
+						<div class="row">
+							<div class="col-md-4 bg-dark d-flex align-items-center rounded-pill shadow">
+								<img src="https://fritzing.org/media/fritzing-repo/users/m/michealhuss/images/head-659651_640.png" class="img-fluid" alt="">
+							</div>
+							<div class="col-md-8">
+								<div class="card">
+									<div class="card-header"><h5 class="card-title mb-0 text-center">Brightdog</h5></div>
+									<div class="card-body">
+
+										<table class="table">
+											<thead>
+												<tr>
+													<th class="text-right" scope="col" colspan="2">More Information</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row">Arot Name</th>
+													<td>: <?php echo $view_user[0]['arot_name'] ?></td>
+												</tr>
+												<tr>
+													<th scope="row">Arot Phone Number</th>
+													<td>: <?php echo $view_user[0]['arot_phone'] ?></td>
+												</tr>
+												<tr>
+													<th scope="row">Arot Owner Name</th>
+													<td>: <?php echo $view_user[0]['arot_owner_name'] ?></td>
+												</tr>
+												<tr>
+													<th scope="row">Arot Owner Phone Number</th>
+													<td>: <?php echo $view_user[0]['arot_owner_phone'] ?></td>
+												</tr>
+											</tbody>
+										</table>
+
+									</div>
+									<div class="card-footer text-muted">
+										<!-- <span>2 days ago</span> -->
+										<a href="#" class="btn btn-warning rounded-0">Delete User</a>
+										<a href="arot.php" class="btn btn-danger rounded-0 float-right">Close Tab</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					<?php } ?>
+
+ <!--
+ <form method="get">
 	<div class="row">
 		<div class="col-sm-2">
 			<div class="form-group">
@@ -98,7 +124,9 @@
 			</div>
 		</div>
 	</div>
-</form> -->
+</form> 
+-->
+
 				</div>
 			</div>
 		</div>
@@ -124,13 +152,13 @@
 					?>
 					<tr>
 						<td><?php echo $s;?></td>
-						<td><?php echo $val['arot_name'];?></td>
+						<td><a href="arot.php?viewid=<?php echo $val['id'] ?>"><?php echo $val['arot_name'];?></a></td>
 						<td><?php echo $val['arot_phone'];?></td>
 						<td><?php echo $val['arot_owner_name'];?></td>
 						<td><?php echo $val['arot_owner_phone'];?></td>
 						<td align="center">
-							<a href="edit-users.php?editId=<?php echo $val['id'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Edit</a> | 
-							<a href="delete.php?delId=<?php echo $val['id'];?>" class="text-danger" onClick="return confirm('Are you sure to delete this user?');"><i class="fa fa-fw fa-trash"></i> Delete</a>
+							<a href="arot_edit.php?editId=<?php echo $val['id'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Edit</a> | 
+							<a href="delete.php?delId=<?php echo $val['id'];?>&delType=arotdar" class="text-danger" onClick="return confirm('Are you sure to delete this user?');"><i class="fa fa-fw fa-trash"></i> Delete</a>
 						</td>
 					</tr>
 					<?php } ?>
@@ -154,6 +182,5 @@
 */
 	</script>
 
-    
 </body>
 </html>
